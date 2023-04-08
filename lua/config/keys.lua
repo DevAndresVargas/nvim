@@ -30,15 +30,26 @@ map("n", "<leader>l", "<C-w>l")
 -- epic remplace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-
---crear archivo
-
+-- Crea un nuevo archivo
+-- Si se proporciona la ruta, también crea la carpeta si no existe
 function create_file()
-    local path = vim.fn.input('Path: ')
-    local filename = vim.fn.input('File name: ')
-    local filepath = path .. '/' .. filename
-    vim.cmd('e ' .. filepath)
+    local name = vim.fn.input('Nombre del archivo: ')
+    if not name or #name == 0 then
+        return
+    end
+
+    local path = vim.fn.input('Ruta (opcional): ')
+    if path and #path > 0 then
+        vim.fn.mkdir(path, 'p')
+        name = path .. '/' .. name
+    end
+
+    local file = io.open(name, 'w')
+    io.close(file)
+    vim.cmd('edit ' .. name)
 end
 
 vim.cmd('command! -nargs=0 CreateFile :lua create_file()')
-map("n", "<leader>nf", ":CreateFile<cr>")
+
+-- Asigna la tecla de acceso rápido <leader>nf a la función create_file()
+vim.api.nvim_set_keymap('n', '<leader>nf', ':CreateFile<CR>', { noremap = true, silent = true })

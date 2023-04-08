@@ -2,7 +2,8 @@ return {
     'nvim-telescope/telescope.nvim',
     brench = '0.1.0',
     dependencies = {
-        'nvim-lua/plenary.nvim'
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-frecency.nvim'
     },
     extensions = {
         file_browser = {
