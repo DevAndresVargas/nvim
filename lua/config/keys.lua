@@ -26,6 +26,9 @@ map("n", "<leader>j", "<C-w>j")
 map("n", "<leader>k", "<C-w>k")
 map("n", "<leader>l", "<C-w>l")
 
+map('n', "<s-k>", "PageUp")
+map('n', "<s-j", "PageDown")
+
 
 -- epic remplace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

@@ -16,13 +16,16 @@ local builtin = require "telescope.builtin"
 
 local path
 
--- determinate home path
-if vim.api.nvim_eval('has("win32")') then
-    path = "%UserProfile%/AppData/Local/"
-else
-    path = "$HOME/.config/"
-end
+-- NOTE: PATHS
 
+--Windows
+userPath = "%UserProfile%/AppData/Local/"
+
+
+
+--unix
+--userPath = "$HOME/.config/"
+--
 
 local M = {}
 
@@ -55,14 +58,15 @@ end
 M.find_nvim_config = function()
     builtin.find_files {
         prompt_title = "< Neovim >",
-        cwd = string.format('%s%s', path, "nvim"),
+        cwd = string.format('%s%s', userPath, "nvim"),
+        -- cwd = "%UserProfile%/AppData/Local/nvim",
     }
 end
 
 M.find_nvim_plugin = function()
     builtin.find_files {
         prompt_title = "< Plugins >",
-        cwd = string.format('%s%s', path, "nvim/lua/plugins"),
+        cwd = string.format('%s%s', userPath, "nvim/lua/plugins"),
         attach_mappings = function(_, map)
             map("i", "<C-t>", my_actions.create_plugin)
             map("i", "<C-d>", my_actions.disable_plugin)
@@ -105,38 +109,6 @@ function M.my_plugins()
     }
 end
 
-function M.scratchs()
-    builtin.find_files {
-        prompt_title = "Scratchs",
-        no_ignore = true,
-        cwd = "~/.config/nvim/lua/scratchs/",
-        attach_mappings = function(_, map)
-            map("i", "<c-t>", my_actions.create_scratch_file)
-
-            return true
-        end
-    }
-end
-
-function M.projectionist()
-    return require("telescope").extensions.projectionist.projectionist()
-end
-
-function M.laravel_commands()
-    return require("telescope").extensions.laravel.laravel()
-end
-
-function M.api_specs()
-    if vim.fn.isdirectory "./api-specification" == 0 then
-        vim.notify("Directory api-specification does not exists", vim.log.levels.WARN, { title = "Telescope Mappings" })
-        return
-    end
-    builtin.git_files {
-        cwd = "./api-specification",
-        show_untracked = true,
-    }
-end
-
 function M.worktree()
     return require("telescope").extensions.git_worktree.git_worktrees()
 end
@@ -151,18 +123,6 @@ end
 
 function M.file_browser_relative()
     return M.file_browser { path = "%:p:h" }
-end
-
-function M.gateway()
-    return require("alpha.php.gateway").graphql_definitions {
-        layout_config = {
-            horizontal = {
-                preview_width = function(_, cols, _)
-                    return math.floor(cols * 0.7)
-                end,
-            },
-        },
-    }
 end
 
 function M.file_browser(opts)
@@ -184,6 +144,53 @@ function M.file_browser(opts)
 
     return require("telescope").extensions.file_browser.file_browser(opts)
 end
+
+-- TODO: revisar funcionalidad
+--
+-- function M.scratchs()
+--     builtin.find_files {
+--         prompt_title = "Scratchs",
+--         no_ignore = true,
+--         cwd = "~/.config/nvim/lua/scratchs/",
+--         attach_mappings = function(_, map)
+--             map("i", "<c-t>", my_actions.create_scratch_file)
+--
+--             return true
+--         end
+--     }
+-- end
+--
+-- function M.projectionist()
+--     return require("telescope").extensions.projectionist.projectionist()
+-- end
+--
+-- function M.laravel_commands()
+--     return require("telescope").extensions.laravel.laravel()
+-- end
+--
+-- function M.api_specs()
+--     if vim.fn.isdirectory "./api-specification" == 0 then
+--         vim.notify("Directory api-specification does not exists", vim.log.levels.WARN, { title = "Telescope Mappings" })
+--         return
+--     end
+--     builtin.git_files {
+--         cwd = "./api-specification",
+--         show_untracked = true,
+--     }
+-- end
+--
+-- function M.gateway()
+--     return require("alpha.php.gateway").graphql_definitions {
+--         layout_config = {
+--             horizontal = {
+--                 preview_width = function(_, cols, _)
+--                     return math.floor(cols * 0.7)
+--                 end,
+--             },
+--         },
+--     }
+-- end
+
 
 return setmetatable({}, {
     __index = function(_, k)
