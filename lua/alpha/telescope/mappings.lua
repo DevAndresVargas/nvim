@@ -35,6 +35,8 @@ map_tele("<leader>ee", "file_browser")
 map_tele("<leader>gc", "branches")
 map_tele("<leader>gs", "git_status")
 
+
+
 -- map_tele("<leader>pf", "projectionist")
 -- map_tele("<leader>rp", "find_nvim_plugin")
 -- map_tele("<leader>rs", "scratchs")
@@ -47,7 +49,6 @@ map_tele("<leader>gs", "git_status")
 return map_tele
 
 
--- local builtin = require('telescope.builtin')
 --nvim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 -- vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 -- vim.keymap.set('n', '<leader>ps', function()

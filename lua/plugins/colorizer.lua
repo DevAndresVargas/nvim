@@ -1,4 +1,4 @@
 return {
     'norcalli/nvim-colorizer.lua',
-    opts = { 'html', 'css', 'lua' }
+    opts = { 'html', 'css', 'lua', 'json' }
 }

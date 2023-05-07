@@ -27,12 +27,12 @@ vim.api.nvim_command(
     "  autocmd TextYankPost * lua vim.highlight.on_yank{higroup=\"IncSearch\", timeout=400, on_visual=true}")
 vim.api.nvim_command("augroup END")
 
--- Grupo de autocmd para numbertoggle
-vim.api.nvim_command("augroup numbertoggle")
-vim.api.nvim_command("  autocmd!")
-vim.api.nvim_command("  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != \"i\" | set rnu | endif")
-vim.api.nvim_command("  autocmd BufLeave,FocusLost,InsertEnter,WinLeave * if &nu | set nornu | endif")
-vim.api.nvim_command("augroup END")
+-- -- Grupo de autocmd para numbertoggle
+-- vim.api.nvim_command("augroup numbertoggle")
+-- vim.api.nvim_command("  autocmd!")
+-- vim.api.nvim_command("  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != \"i\" | set rnu | endif")
+-- vim.api.nvim_command("  autocmd BufLeave,FocusLost,InsertEnter,WinLeave * if &nu | set nornu | endif")
+-- vim.api.nvim_command("augroup END")
 
 -- Grupo de autocmd para fileDetect
 vim.api.nvim_command("augroup fileDetect")

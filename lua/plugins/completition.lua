@@ -9,9 +9,10 @@ return {
         "hrsh7th/cmp-git",
         "saadparwaiz1/cmp_luasnip",
         "onsails/lspkind-nvim",
-        { "L3MON4D3/LuaSnip", version = "v1.*" },
-        "windwp/nvim-autopairs",
+        "L3MON4D3/LuaSnip",
+        -- "windwp/nvim-autopairs",
         "hrsh7th/cmp-nvim-lsp-signature-help",
+        'rafamadriz/friendly-snippets'
     },
     event = "VeryLazy",
 }
