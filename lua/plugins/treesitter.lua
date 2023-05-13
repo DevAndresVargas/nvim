@@ -5,7 +5,6 @@ return {
         "nvim-treesitter/playground",
         "nvim-treesitter/nvim-treesitter-refactor",
         "nvim-treesitter/nvim-treesitter-textobjects",
-        "nvim-treesitter/nvim-treesitter-context",
     },
     config = function()
         require("nvim-treesitter.configs").setup {
@@ -21,28 +20,72 @@ return {
                 "markdown",
                 "markdown_inline",
                 "nix",
-                "php",
-                "phpdoc",
+                "org",
                 "query",
                 "rust",
+                "sql",
                 "svelte",
                 "typescript",
                 "vim",
                 "yaml",
-                "python",
             },
             highlight = {
                 enable = true,
-                additional_vim_regex_highlighting = false,
+                additional_vim_regex_highlighting = { "org" },
             },
             indent = {
                 enable = true,
             },
-            fold = {
+            incremental_selection = {
                 enable = true,
+                keymaps = {
+                    init_selection = "gnn",
+                    node_incremental = "grn",
+                    scope_incremental = "grc",
+                    node_decremental = "grm",
+                },
             },
-            auto_install = true,
-            sync_install = false,
+            refactor = {
+                highlight_definitions = { enable = true },
+                smart_rename = {
+                    enable = false,
+                    keymaps = {
+                        smart_rename = "trr",
+                    },
+                },
+            },
+            textobjects = {
+                select = {
+                    enable = true,
+                    lookahead = true,
+                    keymaps = {
+                        ["af"] = "@function.outer",
+                        ["if"] = "@function.inner",
+                        ["ac"] = "@conditional.outer",
+                        ["ic"] = "@conditional.inner",
+                        ["al"] = "@loop.outer",
+                        ["il"] = "@loop.inner",
+                    },
+                },
+            },
+            playground = {
+                enable = true,
+                disable = {},
+                updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
+                persist_queries = false, -- Whether the query persists across vim sessions
+                keybindings = {
+                    toggle_query_editor = "o",
+                    toggle_hl_groups = "i",
+                    toggle_injected_languages = "t",
+                    toggle_anonymous_nodes = "a",
+                    toggle_language_display = "I",
+                    focus_language = "f",
+                    unfocus_language = "F",
+                    update = "R",
+                    goto_node = "<cr>",
+                    show_help = "?",
+                },
+            },
         }
     end,
 }

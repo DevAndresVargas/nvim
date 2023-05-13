@@ -32,7 +32,8 @@ wk.register({
     ['<leader>n'] = {
         name = 'new',
         t = 'float term',
-        f = 'file'
+        f = 'file',
+        c = 'comment'
     },
     -- refacoring mapping
     ['<leader>r'] = {
