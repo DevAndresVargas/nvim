@@ -15,5 +15,10 @@ return {
                 delay = 50,
             })
         end
+    },
+    {
+        'echasnovski/mini.splitjoin',
+        version = false,
+        config = function() require 'alpha.mini.splitjoin' end
     }
 }

@@ -1,5 +1,3 @@
 return {
-    "windwp/nvim-autopairs",
-    lazy = true,
-    config = true,
+    "jiangmiao/auto-pairs",
 }

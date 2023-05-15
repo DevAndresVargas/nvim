@@ -14,18 +14,11 @@ local my_actions = require "alpha.telescope.actions"
 local builtin = require "telescope.builtin"
 
 
-local path
 
--- NOTE: PATHS
+-- NOTE: Change path if used windows or unix
 
---Windows
 userPath = vim.fn.expand('$UserProfile/AppData/Local/')
 
-
-
---unix
---userPath = "$HOME/.config/"
---
 
 local M = {}
 

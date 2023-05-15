@@ -6,7 +6,7 @@ return {
     },
     keys = {
         {
-            "<leader>rr",
+            "<leader>xr",
             function()
                 require("telescope").extensions.refactoring.refactors()
             end,

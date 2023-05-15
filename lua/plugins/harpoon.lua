@@ -1,16 +1,72 @@
----@diagnostic disable: undefined-global
+local keys = {}
+local terms = 3
+local binds = 5
+
+table.insert(keys, {
+    "<leader><leader>s",
+    function()
+        require("harpoon.ui").toggle_quick_menu()
+    end,
+    desc = "Harpoon Menu",
+})
+
+table.insert(keys, {
+    "<leader><leader>a",
+    function()
+        require("harpoon.mark").add_file()
+    end,
+    desc = "Harpoon Add file",
+})
+
+table.insert(keys, {
+    "<leader><leader>t",
+    function()
+        vim.api.nvim_command [[vsplit]]
+        require("harpoon.term").gotoTerminal(1)
+        vim.api.nvim_command [[startinsert]]
+    end,
+    desc = "Harpoon quick split Terminal",
+})
+
+for i = 1, terms do
+    table.insert(keys, {
+        string.format("<leader><leader>%s", i),
+        function()
+            require("harpoon.term").gotoTerminal(i)
+        end,
+        desc = "Harpoon go to terminal " .. i,
+    })
+end
+
+for i = 1, binds do
+    table.insert(keys, {
+        string.format("<leader>%s", i),
+        function()
+            require("harpoon.ui").nav_file(i)
+        end,
+        desc = "Harpoon go to file " .. i,
+    })
+end
+
 return {
     "ThePrimeagen/harpoon",
-    config = function()
-        local mark = require("harpoon.mark")
-        local ui = require("harpoon.ui")
-
-        vim.keymap.set("n", "<leader>a", mark.add_file)
-        vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
-
-        vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
-        vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
-        vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
-        vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
-    end
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
+    },
+    keys = keys,
+    opts = {
+        global_settings = {
+            enter_on_sendcmd = true,
+        },
+        -- projects = {
+        --     ["$HOME/code/svelte/snippets"] = {
+        --         term = {
+        --             cmds = {
+        --                 "npm run dev",
+        --             },
+        --         },
+        --     },
+        -- },
+    },
 }
