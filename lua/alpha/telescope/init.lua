@@ -40,13 +40,14 @@ function M.branches()
     }
 end
 
-function M.search_config()
-    builtin.git_files {
-        prompt_title = "< Dotfiles >",
-        cwd = "$HOME/.dotfiles",
-        show_untracked = true,
-    }
-end
+-- NOTE: Dotfiles
+-- function M.search_config()
+--     builtin.git_files {
+--         prompt_title = "< Dotfiles >",
+--         cwd = "$HOME/.dotfiles",
+--         show_untracked = true,
+--     }
+-- end
 
 M.find_nvim_config = function()
     builtin.find_files {

@@ -17,7 +17,7 @@ return {
     keys = {
         { "<leader>fx", ":FlutterRun<cr>",         desc = "run" },
         { "<leader>fd", ":FlutterDevices<cr>",     desc = "devices" },
-        { "<leader>fe", ":FluttertEmulators<cr>",  desc = "emulators" },
+        { "<leader>fe", ":FlutterEmulators<cr>",   desc = "emulators" },
         { "<leader>fq", ":FlutterQuit<cr>",        desc = "quit" },
         { "<leader>fr", ":FlutterHotReload<cr>",   desc = "hotReload" },
         { "<leader>fR", ":FlutterHotRestart<cr>",  desc = "hotRestart" },

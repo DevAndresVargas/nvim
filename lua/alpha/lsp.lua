@@ -16,7 +16,7 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ["<C-Space>"] = cmp.mapping.complete(),
 })
 
@@ -38,18 +38,45 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-    local opts = { buffer = bufnr, remap = false }
+    local map_tele = function(key, f, opts)
+        local default = {
+            mode = "n",
+            options = {},
+            buffer = bufnr,
+            desc = nil,
+        }
+        opts = opts or {}
+        opts = vim.tbl_deep_extend("force", default, opts or {})
 
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+        local rhs = function()
+            f(opts.options)
+        end
+
+        local map_options = {
+            remap = false,
+            silent = true,
+        }
+        if opts.buffer then
+            map_options.buffer = opts.buffer
+        end
+        if opts.desc then
+            map_options.desc = "Lsp:" .. opts.desc
+        end
+
+        vim.keymap.set(opts.mode, key, rhs, map_options)
+    end
+
+
+    map_tele("gd", vim.lsp.buf.definition, { desc = 'Go Definition' })
+    map_tele("K", vim.lsp.buf.hover, {})
+    map_tele("<leader>vws", vim.lsp.buf.workspace_symbol, { desc = 'Workspace Symbol' })
+    map_tele("<leader>vd", vim.diagnostic.open_float, { desc = 'View Diagnostics' })
+    map_tele("[d", vim.diagnostic.goto_next, {})
+    map_tele("]d", vim.diagnostic.goto_prev, {})
+    map_tele("<leader>vca", vim.lsp.buf.code_action, { 'View Code Actions' })
+    map_tele("<leader>vrr", vim.lsp.buf.references, { 'View references' })
+    map_tele("<leader>vrn", vim.lsp.buf.rename, {})
+    map_tele("<C-h>", vim.lsp.buf.signature_help, {})
 end)
 
 lsp.setup()

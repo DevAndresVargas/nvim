@@ -1,6 +1,7 @@
 local wk = require("which-key")
 
 wk.register({
+    -- Git
     ['<leader>g'] = {
         name = 'git',
         c = 'branches',
@@ -22,6 +23,7 @@ wk.register({
         name = 'buffer',
         d = 'delete'
     },
+    -- window manager
     ['<leader>h'] = {
         name = 'left window'
     },
@@ -63,20 +65,20 @@ wk.register({
         x = 'Run code',
         f = 'Run file'
     },
-    -- Telescope mapping
-    ['<leader>e'] = {
-        name = "explorer",
-        p = 'find file',
-        w = 'grep word',
-        s = 'string',
-        c = 'config',
-        n = 'nvim',
-        h = 'help tags',
-        b = 'buffer',
-        d = 'treesitter',
-        r = 'relative',
-        e = 'explorer',
-    },
+    -- -- Telescope mapping
+    -- ['<leader>e'] = {
+    --     name = "explorer",
+    --     p = 'find file',
+    --     w = 'grep word',
+    --     s = 'string',
+    --     c = 'config',
+    --     n = 'nvim',
+    --     h = 'help tags',
+    --     b = 'buffer',
+    --     d = 'treesitter',
+    --     r = 'relative',
+    --     e = 'explorer',
+    -- },
     -- Lsp mapping
     ['<leader>v'] = {
         name = "Lsp buf",
