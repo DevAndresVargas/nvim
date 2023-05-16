@@ -46,6 +46,7 @@ require("telescope").setup {
         sorting_strategy = "descending",
         scroll_strategy = "cycle",
         color_devicons = true,
+        disable_devicons = false,
         mappings = {
             i = {
                 -- ["<C-x>"] = false,

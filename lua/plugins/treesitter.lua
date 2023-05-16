@@ -42,9 +42,9 @@ return {
             refactor = {
                 highlight_definitions = { enable = true },
                 smart_rename = {
-                    enable = false,
+                    enable = true,
                     keymaps = {
-                        smart_rename = "trr",
+                        smart_rename = "<leader>nn",
                     },
                 },
             },
@@ -59,6 +59,8 @@ return {
                         ["ic"] = "@conditional.inner",
                         ["al"] = "@loop.outer",
                         ["il"] = "@loop.inner",
+                        ["ao"] = "@widget.outer",
+                        ["io"] = "@widget.inner",
                     },
                 },
             },

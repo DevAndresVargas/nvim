@@ -1,10 +1,15 @@
 return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
+        {
+            "nvim-tree/nvim-web-devicons",
+            config = function()
+                require "alpha.devicons"
+            end
+        },
         { "nvim-lua/plenary.nvim" },
         { "nvim-lua/popup.nvim" },
         { "nvim-telescope/telescope-fzy-native.nvim" },
-        { "ryanoasis/vim-devicons" },
         { "nvim-telescope/telescope-file-browser.nvim" },
         { "nvim-telescope/telescope-ui-select.nvim" },
         {
@@ -19,7 +24,10 @@ return {
                     },
                 },
             },
-        },
+        }, {
+        'L3MON4D3/LuaSnip',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+    }
     },
     event = "VeryLazy",
     config = function()

@@ -8,13 +8,13 @@ require('smoothcursor').setup({
         enable = false,      -- enable fancy mode
         head = { cursor = "▷", texthl = "SmoothCursor", linehl = nil },
         body = {
-            { cursor = "", texthl = "SmoothCursorRed" },
-            { cursor = "", texthl = "SmoothCursorOrange" },
-            { cursor = "●", texthl = "SmoothCursorYellow" },
-            { cursor = "●", texthl = "SmoothCursorGreen" },
-            { cursor = "•", texthl = "SmoothCursorAqua" },
-            { cursor = ".",   texthl = "SmoothCursorBlue" },
-            { cursor = ".",   texthl = "SmoothCursorPurple" },
+            { cursor = "", texthl = "SmoothCursor" },
+            { cursor = "", texthl = "SmoothCursor" },
+            { cursor = "●", texthl = "SmoothCursor" },
+            { cursor = "●", texthl = "SmoothCursor" },
+            { cursor = "•", texthl = "SmoothCursor" },
+            { cursor = ".",   texthl = "SmoothCursor" },
+            { cursor = ".",   texthl = "SmoothCursor" },
         },
         tail = { cursor = nil, texthl = "SmoothCursor" }
     },
@@ -27,4 +27,29 @@ require('smoothcursor').setup({
     disable_float_win = false, -- disable on float window
     enabled_filetypes = nil,   -- example: { "lua", "vim" }
     disabled_filetypes = nil,  -- this option will be skipped if enabled_filetypes is set. example: { "TelescopePrompt", "NvimTree" }
+})
+
+
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd({ 'ModeChanged' }, {
+    callback = function()
+        local current_mode = vim.fn.mode()
+        if current_mode == 'n' then
+            vim.api.nvim_set_hl(0, 'SmoothCursor', { fg = '#45475A' })
+            vim.fn.sign_define('smoothcursor', { text = '' })
+        elseif current_mode == 'v' then
+            vim.api.nvim_set_hl(0, 'SmoothCursor', { fg = '#45475A' })
+            vim.fn.sign_define('smoothcursor', { text = '' })
+        elseif current_mode == 'V' then
+            vim.api.nvim_set_hl(0, 'SmoothCursor', { fg = '#45475A' })
+            vim.fn.sign_define('smoothcursor', { text = '' })
+        elseif current_mode == 'c' then
+            vim.api.nvim_set_hl(0, 'SmoothCursor', { fg = '#45475A' })
+            vim.fn.sign_define('smoothcursor', { text = '󰨊' })
+        elseif current_mode == 'i' then
+            vim.api.nvim_set_hl(0, 'SmoothCursor', { fg = '#45475A' })
+            vim.fn.sign_define('smoothcursor', { text = '' })
+        end
+    end,
 })

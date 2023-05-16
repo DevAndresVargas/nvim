@@ -49,9 +49,9 @@ wk.register({
         c = 'comment'
     },
     -- refacoring mapping
-    ['<leader>r'] = {
-        name = 'replace',
-    },
+    -- ['<leader>r'] = {
+    --     name = 'replace',
+    -- },
     -- database mapping
     ['<leader>o'] = {
         name = 'open',
