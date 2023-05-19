@@ -1,8 +1,8 @@
 require('nvim-web-devicons').setup({
-    ['telescope'] = {
-        telescope = {
+    override_by_filename = {
+        ["telescope"] = {
             icon = "",
-            color = "#aaaaaa",
+            color = "#aaaaea",
             name = "telescope"
         },
     }

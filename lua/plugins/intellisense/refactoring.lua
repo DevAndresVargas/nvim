@@ -11,6 +11,7 @@ return {
                 require("telescope").extensions.refactoring.refactors()
             end,
             mode = { "n", "v" },
+            desc = 'Refactor',
         },
     },
     config = function()

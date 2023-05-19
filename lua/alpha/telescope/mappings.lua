@@ -4,6 +4,7 @@ local map_tele = function(key, f, opts)
         options = {},
         buffer = nil,
         desc = nil,
+        nowait = nil,
     }
     opts = opts or {}
     opts = vim.tbl_deep_extend("force", default, opts or {})
@@ -27,14 +28,15 @@ local map_tele = function(key, f, opts)
 end
 
 
--- not shure what this line does
-vim.api.nvim_set_keymap(
-    "c",
-    "<c-r><c-r>",
-    "<Plug>(TelescopeFuzzyCommandSearch)",
-    { noremap = false, nowait = true, desc = "In comand look for previous commands" }
-)
+-- -- not shure what this line does
+-- vim.api.nvim_set_keymap(
+--     "c",
+--     "<c-r><c-r>",
+--     "<Plug>(TelescopeFuzzyCommandSearch)",
+--     { noremap = false, nowait = true, desc = "In comand look for previous commands" }
+-- )
 
+map_tele("<c-r><c-r>", "commands_history", { mode = "c", desc = "previous comands", nowait = true })
 map_tele("<leader>ew", "grep_word", { desc = "Grep word under cursor" })
 map_tele("<leader>es", "grep_string", { desc = "Grep provided input string" })
 map_tele("<leader>en", "find_nvim_config", { desc = "Search in nvim directory" })

@@ -20,8 +20,14 @@ return {
         'hrsh7th/cmp-nvim-lua',
 
         -- Snippets
-        'L3MON4D3/LuaSnip',
-        'rafamadriz/friendly-snippets' },
+        {
+            'L3MON4D3/LuaSnip',
+            dependencies = 'rafamadriz/friendly-snippets',
+            config = function()
+                -- require 'luasnip'.filetype_extend('dart', { 'flutter' })
+                require 'alpha.luasnip'
+            end
+        } },
     event = "VeryLazy",
     config = function()
         require "alpha.lsp"

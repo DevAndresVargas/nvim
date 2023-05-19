@@ -39,20 +39,16 @@ wk.register({
     ['<leader>q'] = {
         name = 'close window'
     },
-    ['<leader>s'] = {
+    ['<leader>e'] = {
         name = 'epic replace'
     },
     ['<leader>n'] = {
         name = 'new',
         t = 'float term',
         f = 'file',
-        c = 'comment'
+        c = 'comment',
+        n = 'name',
     },
-    -- refacoring mapping
-    -- ['<leader>r'] = {
-    --     name = 'replace',
-    -- },
-    -- database mapping
     ['<leader>o'] = {
         name = 'open',
         d = {
@@ -65,21 +61,6 @@ wk.register({
         x = 'Run code',
         f = 'Run file'
     },
-    -- -- Telescope mapping
-    -- ['<leader>e'] = {
-    --     name = "explorer",
-    --     p = 'find file',
-    --     w = 'grep word',
-    --     s = 'string',
-    --     c = 'config',
-    --     n = 'nvim',
-    --     h = 'help tags',
-    --     b = 'buffer',
-    --     d = 'treesitter',
-    --     r = 'relative',
-    --     e = 'explorer',
-    -- },
-    -- Lsp mapping
     ['<leader>v'] = {
         name = "Lsp buf",
         w = {
@@ -89,7 +70,7 @@ wk.register({
         d = 'open float',
         c = {
             name = 'code',
-            n = 'action',
+            a = 'action',
         }
     }
 })

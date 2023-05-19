@@ -13,10 +13,14 @@ end
 
 require("telescope").setup {
     defaults = {
-        prompt_prefix = " ",
+        prompt_prefix = "  ",
         selection_caret = " ",
         winblend = 0,
         layout_strategy = "horizontal",
+        preview = {
+            hide_on_startup = true,
+            timeout = 284,
+        },
         layout_config = {
             width = 0.95,
             height = 0.85,
@@ -57,7 +61,7 @@ require("telescope").setup {
                 ["<C-y>"] = set_prompt_to_entry_value,
                 -- These are new :)
                 ["<M-p>"] = action_layout.toggle_preview,
-                ["<M-m>"] = action_layout.toggle_mirror,
+                -- ["<M-m>"] = action_layout.toggle_mirror,
                 -- ["<M-p>"] = action_layout.toggle_prompt_position,
 
                 -- ["<M-m>"] = actions.master_stack,

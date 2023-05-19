@@ -31,7 +31,7 @@ map("n", "<leader>q", "<C-w>q")
 
 
 -- epic remplace
--- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>ne", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Crea un nuevo archivo
 -- Si se proporciona la ruta, también crea la carpeta si no existe

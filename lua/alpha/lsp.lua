@@ -1,5 +1,5 @@
 local lsp = require("lsp-zero")
-
+require("luasnip.loaders.from_vscode").lazy_load()
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -7,6 +7,7 @@ lsp.ensure_installed({
     'rust_analyzer',
 })
 
+--require('luasnip').filetype_extend("dart", { "flutter" })
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
@@ -23,13 +24,12 @@ cmp.setup({
         end,
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-p>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-n>'] = cmp.mapping.scroll_docs(4),
-        ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-
+        -- ['<C-p>'] = cmp.mapping.scroll_docs(-4),
+        -- ['<C-n>'] = cmp.mapping.scroll_docs(4),
+        -- ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+        -- ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        -- ["xk"] = cmp.mapping.complete(),
     })
 })
 
@@ -73,15 +73,18 @@ lsp.on_attach(function(client, bufnr)
     end
 
 
-    map_tele("gd", vim.lsp.buf.definition, { desc = 'Go Definition' })
+    map_tele("gd", vim.lsp.buf.definition, { desc = 'Definition' })
+    map_tele("gD", vim.lsp.buf.declaration, { desc = 'Declaration' })
+    map_tele("go", vim.lsp.buf.type_definition, { desc = 'Type Definition' })
+    map_tele("gr", vim.lsp.buf.references, { desc = 'References' })
+    map_tele("gs", vim.lsp.buf.signature_help, { desc = 'Help' })
     map_tele("K", vim.lsp.buf.hover, {})
     map_tele("<leader>vws", vim.lsp.buf.workspace_symbol, { desc = 'Workspace Symbol' })
-    map_tele("<leader>vd", vim.diagnostic.open_float, { desc = 'View Diagnostics' })
+    map_tele("gl", vim.diagnostic.open_float, { desc = ' Diagnostics' })
     map_tele("[d", vim.diagnostic.goto_next, {})
     map_tele("]d", vim.diagnostic.goto_prev, {})
-    map_tele("<leader>vca", vim.lsp.buf.code_action, { 'View Code Actions' })
-    map_tele("<leader>vrr", vim.lsp.buf.references, { 'View references' })
-    -- map_tele("<leader>vrn", vim.lsp.buf.rename, {})
+    map_tele("<leader>vca", vim.lsp.buf.code_action, { desc = ' Code Actions' })
+    map_tele("<leader>vr", vim.lsp.buf.references, { desc = 'View references' })
     map_tele("<C-h>", vim.lsp.buf.signature_help, {})
 end)
 

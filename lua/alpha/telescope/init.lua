@@ -12,6 +12,7 @@ local fb_actions = require("telescope").extensions.file_browser.actions
 local actions = require "telescope.actions"
 local my_actions = require "alpha.telescope.actions"
 local builtin = require "telescope.builtin"
+local telescope_ext = require "telescope".extensions
 
 
 
@@ -104,15 +105,19 @@ function M.my_plugins()
 end
 
 function M.worktree()
-    return require("telescope").extensions.git_worktree.git_worktrees()
+    return telescope_ext.git_worktree.git_worktrees()
 end
 
 function M.worktree_create()
-    return require("telescope").extensions.git_worktree.create_git_worktree()
+    return telescope_ext.git_worktree.create_git_worktree()
+end
+
+function M.commands_history()
+    return telescope_ext.commands_history()
 end
 
 function M.refactor()
-    return require("telescope").extensions.refactoring.refactors()
+    return telescope_ext.refactoring.refactors()
 end
 
 function M.file_browser_relative()

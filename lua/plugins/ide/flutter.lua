@@ -10,6 +10,9 @@ return {
             border = 'rounded',
         }
     },
+    config = function()
+        require("alpha.flutter")
+    end,
     dependencies = {
         'nvim-lua/plenary.nvim',
         'stevearc/dressing.nvim', -- optional for vim.ui.select
@@ -19,8 +22,9 @@ return {
         { "<leader>fd", ":FlutterDevices<cr>",     desc = "devices" },
         { "<leader>fe", ":FlutterEmulators<cr>",   desc = "emulators" },
         { "<leader>fq", ":FlutterQuit<cr>",        desc = "quit" },
-        { "<leader>fr", ":FlutterHotReload<cr>",   desc = "hotReload" },
-        { "<leader>fR", ":FlutterHotRestart<cr>",  desc = "hotRestart" },
+        { "<leader>fr", ":FlutterReload<cr>",      desc = "hotReload" },
+        { "<leader>fR", ":FlutterRestart<cr>",     desc = "hotRestart" },
         { "<leader>fD", ":FlutterVisualDebug<cr>", desc = "debug" }
     },
+
 }
