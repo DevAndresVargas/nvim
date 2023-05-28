@@ -18,6 +18,7 @@ return {
         'hrsh7th/cmp-path',
         'saadparwaiz1/cmp_luasnip',
         'hrsh7th/cmp-nvim-lua',
+        'hlissner/vim-ultisnips-snippets',
 
         -- Snippets
         {

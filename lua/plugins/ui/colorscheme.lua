@@ -10,4 +10,10 @@ return {
             vim.cmd.colorscheme "catppuccin-mocha"
         end,
     },
+    {
+        'nyngwang/nvimgelion',
+        config = function()
+            -- do whatever you want for further customization~
+        end
+    }
 }

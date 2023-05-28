@@ -2,17 +2,6 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
         {
-            "nvim-tree/nvim-web-devicons",
-            config = function()
-                require "alpha.devicons"
-            end
-        },
-        { "nvim-lua/plenary.nvim" },
-        { "nvim-lua/popup.nvim" },
-        { "nvim-telescope/telescope-fzy-native.nvim" },
-        { "nvim-telescope/telescope-file-browser.nvim" },
-        { "nvim-telescope/telescope-ui-select.nvim" },
-        {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
             dependencies = {
@@ -24,10 +13,21 @@ return {
                     },
                 },
             },
-        }, {
-        'L3MON4D3/LuaSnip',
-        dependencies = { 'rafamadriz/friendly-snippets' },
-    }
+        },
+        {
+            "nvim-tree/nvim-web-devicons",
+            config = function()
+                require "alpha.devicons"
+            end
+        },
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-lua/popup.nvim" },
+        { "nvim-telescope/telescope-file-browser.nvim" },
+        { "nvim-telescope/telescope-ui-select.nvim" },
+        {
+            'L3MON4D3/LuaSnip',
+            dependencies = { 'rafamadriz/friendly-snippets' },
+        }
     },
     event = "VeryLazy",
     config = function()

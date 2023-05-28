@@ -19,6 +19,9 @@ wk.register({
     ['<leader>p'] = {
         name = '"_dp'
     },
+    ['<leader>m'] = {
+        name = 'Monorepo'
+    },
     ['<leader>b'] = {
         name = 'buffer',
         d = 'delete'
