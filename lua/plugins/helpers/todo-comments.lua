@@ -7,7 +7,7 @@ return {
     lazy = false,
     cmd = { "TodoTrouble", "TodoTelescope", "TodoQuickFix" },
     keys = {
-        { '<leader>tt', ':TodoTelescope<cr>', desc = 'Explorer' },
+        { '<leader>t', ':TodoTelescope<cr>', desc = 'TODO Explorer' },
         {
             "]t",
             function()

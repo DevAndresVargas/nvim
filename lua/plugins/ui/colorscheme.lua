@@ -6,14 +6,21 @@ return {
         name = "catppuccin",
         lazy = false,
         priority = 1000,
-        config = function()
-            vim.cmd.colorscheme "catppuccin-mocha"
-        end,
+        -- config = function()
+        --     vim.cmd.colorscheme "catppuccin-mocha"
+        -- end,
     },
     {
         'nyngwang/nvimgelion',
         config = function()
             -- do whatever you want for further customization~
         end
+    },
+    {
+        'EdenEast/nightfox.nvim',
+
+        config = function()
+            vim.cmd.colorscheme "nordfox"
+        end,
     }
 }

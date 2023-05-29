@@ -44,7 +44,7 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-    local map_tele = function(key, f, opts)
+    local map_lsp = function(key, f, opts)
         local default = {
             mode = "n",
             options = {},
@@ -73,19 +73,19 @@ lsp.on_attach(function(client, bufnr)
     end
 
 
-    map_tele("gd", vim.lsp.buf.definition, { desc = 'Definition' })
-    map_tele("gD", vim.lsp.buf.declaration, { desc = 'Declaration' })
-    map_tele("go", vim.lsp.buf.type_definition, { desc = 'Type Definition' })
-    map_tele("gr", vim.lsp.buf.references, { desc = 'References' })
-    map_tele("gs", vim.lsp.buf.signature_help, { desc = 'Help' })
-    map_tele("K", vim.lsp.buf.hover, {})
-    map_tele("<leader>vws", vim.lsp.buf.workspace_symbol, { desc = 'Workspace Symbol' })
-    map_tele("gl", vim.diagnostic.open_float, { desc = ' Diagnostics' })
-    map_tele("[d", vim.diagnostic.goto_next, {})
-    map_tele("]d", vim.diagnostic.goto_prev, {})
-    map_tele("<leader>vca", vim.lsp.buf.code_action, { desc = ' Code Actions' })
-    map_tele("<leader>vr", vim.lsp.buf.references, { desc = 'View references' })
-    map_tele("<C-h>", vim.lsp.buf.signature_help, {})
+    map_lsp("gd", vim.lsp.buf.definition, { desc = 'Definition' })
+    map_lsp("gD", vim.lsp.buf.declaration, { desc = 'Declaration' })
+    map_lsp("go", vim.lsp.buf.type_definition, { desc = 'Type Definition' })
+    map_lsp("gr", vim.lsp.buf.references, { desc = 'References' })
+    map_lsp("gs", vim.lsp.buf.signature_help, { desc = 'Help' })
+    map_lsp("K", vim.lsp.buf.hover, {})
+    map_lsp("<leader>vws", vim.lsp.buf.workspace_symbol, { desc = 'Workspace Symbol' })
+    map_lsp("gl", vim.diagnostic.open_float, { desc = ' Diagnostics' })
+    map_lsp("[d", vim.diagnostic.goto_next, {})
+    map_lsp("]d", vim.diagnostic.goto_prev, {})
+    map_lsp("<leader>ca", vim.lsp.buf.code_action, { desc = ' Code Actions' })
+    map_lsp("<leader>cr", vim.lsp.buf.references, { desc = 'View references' })
+    map_lsp("<C-h>", vim.lsp.buf.signature_help, {})
 end)
 
 lsp.setup()

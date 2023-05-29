@@ -3,79 +3,49 @@ local wk = require("which-key")
 wk.register({
     -- Git
     ['<leader>g'] = {
-        name = 'git',
-        c = 'branches',
-        s = 'status'
+        name = 'Git',
+        c = 'Branches',
+        s = 'Status'
     },
     -- flutter
     ['<leader>f'] = {
-        name = 'flutter',
+        name = 'Flutter',
     },
     -- harpoon
     ['<leader><leader>'] = {
-        name = 'harpoon'
+        name = 'Harpoon'
     },
-    -- Custom mapping
-    ['<leader>p'] = {
-        name = '"_dp'
-    },
-    ['<leader>m'] = {
-        name = 'Monorepo'
-    },
-    ['<leader>b'] = {
-        name = 'buffer',
-        d = 'delete'
-    },
-    -- window manager
-    ['<leader>h'] = {
-        name = 'left window'
-    },
-    ['<leader>l'] = {
-        name = 'right window'
-    },
-    ['<leader>j'] = {
-        name = 'down window'
-    },
-    ['<leader>k'] = {
-        name = 'up window'
-    },
-    ['<leader>q'] = {
-        name = 'close window'
-    },
+    -- Telescope
     ['<leader>e'] = {
-        name = 'epic replace'
+        name = 'Explorer'
+    },
+    -- map("v", "<leader>p", '"_dp')
+    ['<leader>t'] = {
+        name = 'TODO Explorer'
+    },
+    ['<leader>c'] = {
+        name = 'Code'
     },
     ['<leader>n'] = {
-        name = 'new',
-        t = 'float term',
-        f = 'file',
-        c = 'comment',
-        n = 'name',
+        name = 'New',
+        t = 'Float Term',
+        f = 'File',
+        c = 'Comment',
     },
     ['<leader>o'] = {
-        name = 'open',
+        name = 'Open',
         d = {
-            name = 'database'
+            name = 'Database'
         }
     },
     -- code runner mapping
     ['<leader>x'] = {
-        name = 'code',
-        x = 'Run code',
-        f = 'Run file'
+        name = 'Code',
+        x = 'Run Code',
+        f = 'Run File'
     },
-    ['<leader>v'] = {
-        name = "Lsp buf",
-        w = {
-            name = 'workspace',
-            s = 'sybol'
-        },
-        d = 'open float',
-        c = {
-            name = 'code',
-            a = 'action',
-        }
-    }
+
+    ['<leader>v'] = { name = "Lsp", w = 'Workspace' }
 })
 
 require('which-key').setup({
