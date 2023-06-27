@@ -29,7 +29,6 @@ wk.register({
     ['<leader>n'] = {
         name = 'New',
         t = 'Float Term',
-        f = 'File',
         c = 'Comment',
     },
     ['<leader>o'] = {

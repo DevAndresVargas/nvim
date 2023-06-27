@@ -1,5 +1,6 @@
 local lsp = require("lsp-zero")
 require("luasnip.loaders.from_vscode").lazy_load()
+local lspkind = require "lspkind"
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -14,7 +15,6 @@ lsp.nvim_workspace()
 
 
 local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
     snippet = {
@@ -23,14 +23,32 @@ cmp.setup({
             require('luasnip').lsp_expand(args.body)
         end,
     },
+    formatting = {
+        format = lspkind.cmp_format {
+            with_text = true,
+            mode = 'symbol',
+            menu = {
+                buffer = "[buf]",
+                nvim_lsp = "[LSP]",
+                nvim_lua = "[api]",
+                path = "[path]",
+                luasnip = "[snip]",
+                ["vim-dadbod-completion"] = "[DB]",
+            },
+        },
+    },
     mapping = cmp.mapping.preset.insert({
-        -- ['<C-p>'] = cmp.mapping.scroll_docs(-4),
-        -- ['<C-n>'] = cmp.mapping.scroll_docs(4),
-        -- ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
-        -- ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-        -- ["xk"] = cmp.mapping.complete(),
     })
+})
+
+
+cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
+    sources = cmp.config.sources({
+        { name = "vim-dadbod-completion" },
+    }, {
+        { name = "buffer" },
+    }),
 })
 
 lsp.set_preferences({

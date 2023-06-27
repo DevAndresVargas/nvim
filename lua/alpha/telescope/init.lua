@@ -135,13 +135,17 @@ function M.file_browser(opts)
             prompt_position = "top",
         },
         attach_mappings = function(_, map)
-            map("i", "<c-y>", fb_actions.create)
+            map("i", "<c-y>", fb_actions.create_from_prompt)
 
             return true
         end,
     }
 
-    return require("telescope").extensions.file_browser.file_browser(opts)
+    return telescope_ext.file_browser.file_browser(opts)
+end
+
+function M.yank_history()
+    return telescope_ext.yank_history.yank_history(require('telescope.themes').get_cursor({ previewer = false }))
 end
 
 -- TODO: revisar funcionalidad

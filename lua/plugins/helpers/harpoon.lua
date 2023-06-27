@@ -58,15 +58,16 @@ return {
     opts = {
         global_settings = {
             enter_on_sendcmd = true,
+            shell = 'pwsh.exe'
         },
-        -- projects = {
-        --     ["$HOME/code/svelte/snippets"] = {
-        --         term = {
-        --             cmds = {
-        --                 "npm run dev",
-        --             },
-        --         },
-        --     },
-        -- },
+        projects = {
+            ["D:/Repos/Python/Django"] = {
+                term = {
+                    cmds = {
+                        "pipenv shell",
+                    },
+                },
+            },
+        },
     },
 }

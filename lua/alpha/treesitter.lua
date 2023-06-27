@@ -8,6 +8,7 @@ require("nvim-treesitter.configs").setup {
         "lua",
         "org",
         "query",
+        'dart',
         "python",
         "rust",
         "sql",

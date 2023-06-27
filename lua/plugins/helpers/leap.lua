@@ -14,9 +14,8 @@ return { -- easily jump to any location and enhanced f/t motions for Leap
     {
         "ggandor/leap.nvim",
         keys = {
-            { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
-            { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
-            { "Gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
+            { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+            { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
         },
         config = function(_, opts)
             local leap = require("leap")

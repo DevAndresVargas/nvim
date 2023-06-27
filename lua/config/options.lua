@@ -1,3 +1,5 @@
+-- vim.g.python3_host_prog = 'C:/Python311/python.exe'
+vim.env.shell = 'pwsh.exe'
 vim.g.mapleader = " "
 
 local opt = vim.o

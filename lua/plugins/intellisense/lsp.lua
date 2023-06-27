@@ -6,9 +6,12 @@ return {
         'neovim/nvim-lspconfig',
         {
             'williamboman/mason.nvim',
-            build = function()
-                pcall('MasonUpdate', vim.cmd)
-            end,
+            opts = {
+                ui = {
+                    border = 'rounded',
+                },
+            },
+            build = ':MasonUpdate'
         },
         'williamboman/mason-lspconfig.nvim',
         -- Autocompletion
@@ -19,13 +22,14 @@ return {
         'saadparwaiz1/cmp_luasnip',
         'hrsh7th/cmp-nvim-lua',
         'hlissner/vim-ultisnips-snippets',
+        "onsails/lspkind-nvim",
+        "j-hui/fidget.nvim",
 
         -- Snippets
         {
             'L3MON4D3/LuaSnip',
             dependencies = 'rafamadriz/friendly-snippets',
             config = function()
-                -- require 'luasnip'.filetype_extend('dart', { 'flutter' })
                 require 'alpha.luasnip'
             end
         } },

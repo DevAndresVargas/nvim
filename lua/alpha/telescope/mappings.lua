@@ -47,6 +47,7 @@ map_tele("<leader>er", "file_browser_relative", { desc = "Current directory" })
 map_tele("<leader>ee", "file_browser", { desc = "Project directory" })
 map_tele("<leader>ep", "find_nvim_plugin", { desc = "Search Neovim plugins" })
 map_tele("<leader>ed", "diagnostics", { desc = "Diagnostic of the buffer" })
+map_tele("<leader>y", "yank_history", { desc = "Yank History" })
 
 
 
